@@ -1,6 +1,7 @@
 #encoding: utf-8
 require 'scraperwiki'
 require 'nokogiri'
+require 'json'
 
 # Read in a page
 url = "https://docs.google.com/spreadsheets/d/1QkkIRF-3Qrz-aRIxERbGbB7YHWz2-t4ix-7TEcuBNfE/pubhtml?gid=607896942&single=true"
