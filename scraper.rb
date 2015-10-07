@@ -16,19 +16,27 @@ end
 # Builds records
 content.shift
 content.each do |row|
+
+  tags = []
+  row[3].gsub(', ',',').split(',').each do |tag|
+    tags << tag.strip
+  end
+
   record = {
     "date" => row[0],
     "title" => row[1],
     "summary" => row[2],
-    "source" => row[3],
-    "img" => row[4],
-    "highlighted" => row[5],
+    "tags" => tags,
+    "source" => row[4],
+    "img" => row[5],
+    "highlighted" => row[6],
     "last_update" => Date.today.to_s
   }
 
   # Save if the record doesn't exist
   if ((ScraperWiki.select("* from data where `source`='#{record['source']}'").empty?) rescue true)
     ScraperWiki.save_sqlite(["source"], record)
+    record['tags'] = JSON.dump(record['tags'])
     puts "Adds new record from " + record['source']
   else
     puts "Skipping already saved record from " + record['source']
