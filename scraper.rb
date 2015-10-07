@@ -35,8 +35,8 @@ content.each do |row|
 
   # Save if the record doesn't exist
   if ((ScraperWiki.select("* from data where `source`='#{record['source']}'").empty?) rescue true)
-    ScraperWiki.save_sqlite(["source"], record)
     record['tags'] = JSON.dump(record['tags'])
+    ScraperWiki.save_sqlite(["source"], record)
     puts "Adds new record from " + record['source']
   else
     puts "Skipping already saved record from " + record['source']
