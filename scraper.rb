@@ -40,6 +40,7 @@ content.each do |row|
     ScraperWiki.save_sqlite(["source"], record)
     puts "Adds new record from " + record['source']
   else
+    record['tags'] = JSON.dump(record['tags'])
     ScraperWiki.save_sqlite(["source"], record)
     puts "Updating already saved record from " + record['source']
   end
