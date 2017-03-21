@@ -19,18 +19,19 @@ content.shift
 content.each do |row|
 
   tags = []
-  row[3].gsub(', ',',').split(',').each do |tag|
+  row[4].gsub(', ',',').split(',').each do |tag|
     tags << tag.strip
   end
 
   record = {
-    "date" => row[0],
-    "title" => row[1],
-    "summary" => row[2],
+    "uid" => row[0],
+    "date" => row[1],
+    "title" => row[2],
+    "summary" => row[3],
     "tags" => tags,
-    "source" => row[4],
-    "img" => row[5],
-    "highlighted" => row[6],
+    "source" => row[5],
+    "img" => row[6],
+    "highlighted" => row[7],
     "last_update" => Date.today.to_s
   }
 
