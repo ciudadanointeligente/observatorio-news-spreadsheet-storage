@@ -24,7 +24,7 @@ content.each do |row|
   end
 
   record = {
-    "uid" => row[0],
+    "uid" => row[0].to_i,
     "date" => row[1],
     "title" => row[2],
     "summary" => row[3],
